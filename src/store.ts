@@ -1,4 +1,3 @@
-// src/store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
 import appointmentsReducer from "./features/appointmentSlice";
@@ -13,5 +12,8 @@ const store = configureStore({
     messages: messagesReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;
