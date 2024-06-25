@@ -1,6 +1,7 @@
 // src/features/appointmentsSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../lib/axios";
+import { Appointment } from "../interfaces";
 
 // Async thunk to fetch appointments
 export const fetchAppointments = createAsyncThunk(
@@ -36,7 +37,7 @@ export const rejectAppointment = createAsyncThunk(
 const appointmentsSlice = createSlice({
   name: "appointments",
   initialState: {
-    appointments: [],
+    appointments: [] as Appointment[],
     status: "idle",
     error: null,
   },
