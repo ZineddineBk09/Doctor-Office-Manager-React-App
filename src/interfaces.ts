@@ -2,7 +2,6 @@ export interface User {
   id: string;
   email: string;
   password?: string;
-  role: "doctor" | "patient";
   profile: UserProfile;
 }
 
@@ -12,7 +11,7 @@ export interface UserProfile {
   phone: string;
   address: string;
   dateOfBirth: string;
-  gender: "male" | "female";
+  gender: "male" | "female" | "other";
 }
 
 export interface Doctor extends User {
@@ -34,7 +33,7 @@ export interface MedicalHistory {
 
 export interface Appointment {
   id: string;
-  patientId: string;
+  patient: Patient;
   doctorId: string;
   date: string;
   time: string;
@@ -48,4 +47,10 @@ export interface Message {
   senderId: string;
   receiverId: string;
   timestamp: string;
+}
+
+export interface Chat {
+  id: string;
+  patientId: string;
+  messages: Message[];
 }
