@@ -37,6 +37,8 @@ import {
   User as UserIcon,
 } from "lucide-react";
 import { useLocation } from "react-router-dom";
+import { signOut } from "../features/authSlice";
+import { useDispatch } from "react-redux";
 
 const MainLayout = ({
   children,
@@ -45,6 +47,8 @@ const MainLayout = ({
   children: React.ReactNode;
   title?: string;
 }) => {
+  const dispatch: any = useDispatch();
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <Sidebar />
@@ -127,8 +131,15 @@ const MainLayout = ({
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-500">
-                Logout
+              <DropdownMenuItem className="text-red-500 hover:text-red-500">
+                <button
+                  onClick={() => {
+                    console.log("Signing out...");
+                    dispatch(signOut());
+                  }}
+                >
+                  Logout
+                </button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -140,6 +151,9 @@ const MainLayout = ({
 };
 
 const Sidebar = () => {
+  const route = useLocation();
+  const page = route.pathname.split("/").slice(1)[0];
+
   const links = [
     { icon: HomeIcon, label: "Dashboard", href: "/dashboard" },
     { icon: CalendarDaysIcon, label: "Appointments", href: "/appointments" },
@@ -156,7 +170,6 @@ const Sidebar = () => {
             className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
             <StethoscopeIcon className="h-4 w-4 transition-all group-hover:scale-110" />
-            <span className="sr-only">Acme Inc</span>
           </a>
 
           {links.map((link, index) => {
@@ -165,7 +178,11 @@ const Sidebar = () => {
                 <TooltipTrigger asChild>
                   <a
                     href={link.href}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                    className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${
+                      page === link.href.split("/").slice(1)[0]
+                        ? "text-foreground bg-gray-100"
+                        : "text-muted-foreground "
+                    }`}
                   >
                     <link.icon className="h-5 w-5" />
                     <span className="sr-only">{link.label}</span>
