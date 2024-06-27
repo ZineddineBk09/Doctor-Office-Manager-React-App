@@ -1,4 +1,3 @@
-// src/components/login/index.tsx
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../features/authSlice";
