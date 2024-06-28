@@ -12,7 +12,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
-  BreadcrumbPage,
 } from "../components/ui/breadcrumb";
 import {
   DropdownMenu,
@@ -25,10 +24,7 @@ import {
 
 import {
   Users as UsersIcon,
-  LineChart as LineChartIcon,
   House as HomeIcon,
-  Package as PackageIcon,
-  Package2 as Package2Icon,
   Settings as SettingsIcon,
   PanelLeft as PanelLeftIcon,
   CalendarDays as CalendarDaysIcon,
@@ -69,43 +65,35 @@ const MainLayout = ({
                   href="#"
                   className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                 >
-                  <Package2Icon className="h-5 w-5 transition-all group-hover:scale-110" />
-                  <span className="sr-only">Acme Inc</span>
+                  <StethoscopeIcon className="h-5 w-5 transition-all group-hover:scale-110" />
                 </a>
                 <a
-                  href="#"
+                  href="/dashboard"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <HomeIcon className="h-5 w-5" />
                   Dashboard
                 </a>
                 <a
-                  href="#"
+                  href="/appointments"
                   className="flex items-center gap-4 px-2.5 text-foreground"
                 >
                   <CalendarDaysIcon className="h-5 w-5" />
                   Appointments
                 </a>
                 <a
-                  href="#"
-                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                >
-                  <PackageIcon className="h-5 w-5" />
-                  Products
-                </a>
-                <a
-                  href="#"
+                  href="/patients"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <UsersIcon className="h-5 w-5" />
                   Patients
                 </a>
                 <a
-                  href="#"
+                  href="/chats"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
-                  <LineChartIcon className="h-5 w-5" />
-                  Settings
+                  <MessagesSquareIcon className="h-5 w-5" />
+                  Chats
                 </a>
               </nav>
             </SheetContent>
@@ -131,15 +119,14 @@ const MainLayout = ({
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-500 hover:text-red-500">
-                <button
-                  onClick={() => {
-                    console.log("Signing out...");
-                    dispatch(signOut());
-                  }}
-                >
-                  Logout
-                </button>
+              <DropdownMenuItem
+                className="text-red-500 hover:text-red-500 hover:cursor-pointer"
+                onClick={() => {
+                  console.log("Signing out...");
+                  dispatch(signOut());
+                }}
+              >
+                <>Logout</>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
