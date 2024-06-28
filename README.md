@@ -4,17 +4,19 @@ This Doctor Office Management application allows doctors to manage appointments,
 
 ### Table of Contents
 
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Available Scripts](#available-scripts)
-- [Features](#features)
-- [Redux Slices](#redux-slices)
-- [Components](#components)
-- [API Integration](#api-integration)
-- [Styling](#styling)
-- [Authentication](#authentication)
-- [Contributing](#contributing)
-- [License](#license)
+- [Doctor Office Management App](#doctor-office-management-app)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Project Structure](#project-structure)
+  - [Available Scripts](#available-scripts)
+  - [Features](#features)
+  - [Redux Slices](#redux-slices)
+  - [Components](#components)
+  - [API Integration](#api-integration)
+  - [Styling](#styling)
+  - [Authentication](#authentication)
+  - [Contributing](#contributing)
+  - [Pages](#pages)
 
 ### Installation
 
@@ -41,88 +43,34 @@ This Doctor Office Management application allows doctors to manage appointments,
 
 ```
 ├── components
-├── components.json
 ├── lib
-│   └── utils.ts
-├── package.json
-├── package-lock.json
 ├── public
-│   ├── favicon.ico
-│   ├── images
-│   │   └── login-bg.jpg
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
-├── README.md
-├── src
-│   ├── App.css
-│   ├── App.tsx
-│   ├── assets
-│   ├── components
-│   │   ├── appointments
-│   │   │   ├── dialogs
-│   │   │   │   └── edit.tsx
-│   │   │   └── index.tsx
-│   │   ├── chats
-│   │   │   └── index.tsx
-│   │   ├── dashboard
-│   │   │   └── index.tsx
-│   │   ├── login
-│   │   │   └── index.tsx
-│   │   ├── patients
-│   │   │   ├── dialogs
-│   │   │   │   └── edit.tsx
-│   │   │   └── index.tsx
-│   │   ├── register
-│   │   │   └── index.tsx
-│   │   ├── shared
-│   │   │   ├── delete.tsx
-│   │   │   ├── protected-route.tsx
-│   │   │   └── unprotected-route.tsx
-│   │   └── ui
-│   │       ├── alert-dialog.tsx
-│   │       ├── avatar.tsx
-│   │       ├── badge.tsx
-│   │       ├── breadcrumb.tsx
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── dialog.tsx
-│   │       ├── dropdown-menu.tsx
-│   │       ├── input.tsx
-│   │       ├── label.tsx
-│   │       ├── pagination.tsx
-│   │       ├── progress.tsx
-│   │       ├── separator.tsx
-│   │       ├── sheet.tsx
-│   │       ├── table.tsx
-│   │       ├── tabs.tsx
-│   │       ├── textarea.tsx
-│   │       └── tooltip.tsx
-│   ├── data
-│   │   └── examples.ts
-│   ├── features
-│   │   ├── appointmentSlice.ts
-│   │   ├── authSlice.ts
-│   │   ├── messageSlice.ts
-│   │   └── patientSlice.ts
-│   ├── hooks
-│   │   └── useAuth.ts
-│   ├── index.css
-│   ├── index.tsx
-│   ├── interfaces.ts
-│   ├── layouts
-│   │   └── main.tsx
-│   ├── lib
-│   │   ├── axios.ts
-│   │   └── utils.ts
-│   ├── services
-│   │   ├── api.ts
-│   │   └── firebase.ts
-│   └── store.ts
-├── tailwind.config.js
-└── tsconfig.json
+│   └── images
+│       └── screenshots
+└── src
+    ├── assets
+    ├── components
+    │   ├── appointments
+    │   │   ├── dialogs
+    │   │   └── table
+    │   ├── chats
+    │   ├── dashboard
+    │   │   ├── charts
+    │   │   └── data
+    │   ├── login
+    │   ├── patients
+    │   │   ├── dialogs
+    │   │   └── table
+    │   ├── register
+    │   ├── shared
+    │   └── ui
+    ├── data
+    ├── features
+    ├── hooks
+    ├── layouts
+    ├── lib
+    ├── services
+    └── utils
 ```
 
 ### Available Scripts
@@ -182,6 +130,23 @@ This Doctor Office Management application allows doctors to manage appointments,
 5. **Push to the branch** (`git push origin feature-branch`).
 6. **Open a pull request**.
 
-### License
 
-No license.
+### Pages
+
+- **Login**: The login page where users can sign in.
+   <img src="public/images/screenshots/login page.png" alt="Login" width="750">
+
+- **Register**: The registration page where users can sign up.
+   <img src="public/images/screenshots/register page.png" alt="Register" width="750">
+
+- **Dashboard**: The main dashboard page with statistics and charts.
+   <img src="public/images/screenshots/dashboard page.png" alt="Dashboard" width="750">
+
+- **Appointments**: The appointments page for managing appointments.
+   <img src="public/images/screenshots/appointments page.png" alt="Appointments" width="750">
+
+- **Patients**: The patients page for managing patient records.
+   <img src="public/images/screenshots/patients page.png" alt="Patients" width="750">
+
+- **Chats**: The messaging interface for communicating with patients.
+   <img src="public/images/screenshots/chats page.png" alt="Chats" width="750">
