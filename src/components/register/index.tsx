@@ -1,5 +1,3 @@
-// src/components/signup/index.tsx
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../features/authSlice";
 import { Label } from "../ui/label";

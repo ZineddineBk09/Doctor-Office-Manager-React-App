@@ -5,13 +5,9 @@ import {
   CardContent,
   CardDescription,
 } from "../../components/ui/card";
-import { ResponsivePie } from "@nivo/pie";
-import { ResponsiveLine } from "@nivo/line";
-import { ResponsiveBar } from "@nivo/bar";
-import { Appointment, Chat, Patient } from "@/interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { fakeChats } from "../../data/examples";
+import { fakeAppointments, fakeChats, fakePatients } from "../../data/examples";
 import {
   Users as UsersIcon,
   CalendarDays as CalendarDaysIcon,
@@ -46,6 +42,9 @@ export default function Dashboard() {
     patients
   );
   const appointmentsByStatus = getAppointmentsByStatus(appointments);
+
+  console.log(fakePatients);
+  console.log("=======================");
 
   return (
     <div className="flex min-h-screen w-full flex-col">
