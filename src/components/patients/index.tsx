@@ -42,10 +42,10 @@ export default function Patients() {
                   <DropdownMenuLabel>Filter by</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuCheckboxItem checked>
-                    Fulfilled
+                  Filter 01
                   </DropdownMenuCheckboxItem>
-                  <DropdownMenuCheckboxItem>Declined</DropdownMenuCheckboxItem>
-                  <DropdownMenuCheckboxItem>Refunded</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Filter 02</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Filter 03</DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
               </DropdownMenu>
               <Button size="sm" variant="outline" className="h-7 gap-1 text-sm">

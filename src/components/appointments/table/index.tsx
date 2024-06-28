@@ -11,7 +11,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ChevronDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
 import { Button } from "../../ui/button";
 import { Checkbox } from "../../ui/checkbox";
@@ -33,13 +33,13 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { fakePatients } from "../../../data/examples";
-import { Patient } from "../../../interfaces";
+import { fakeAppointments } from "../../../data/examples";
+import { Appointment } from "../../../interfaces";
 import { Badge } from "../../ui/badge";
 
-const data: Patient[] = fakePatients;
+const data: Appointment[] = fakeAppointments;
 
-const columns: ColumnDef<Patient>[] = [
+const columns: ColumnDef<Appointment>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -65,44 +65,45 @@ const columns: ColumnDef<Patient>[] = [
     enableHiding: false,
   },
   {
-    id: "name",
-    header: "Name",
+    id: "appointment",
+    header: "Appointment",
     cell: ({ row }) => {
-      const patient = row.original;
-
+      const appointment = row.original;
       return (
         <div>
           <div className="font-medium">
-            {patient.profile.firstName + " " + patient.profile.lastName}
+            {appointment.patient.profile.firstName +
+              " " +
+              appointment.patient.profile.lastName}
           </div>
           <div className="hidden text-sm text-muted-foreground md:inline">
-            {patient.email}
+            {appointment.patient.profile.phone}
           </div>
         </div>
       );
     },
   },
   {
-    id: "phone",
-    header: "Phone",
-    cell: ({ row }) => row.original.profile.phone,
+    id: "reason",
+    header: "Reason",
+    cell: ({ row }) => row.original.reason,
   },
   {
-    id: "address",
-    header: "Address",
-    cell: ({ row }) => row.original.profile.address,
+    id: "date",
+    header: "Date",
+    cell: ({ row }) => row.original.date,
   },
   {
-    id: "dateOfBirth",
-    header: "Date of Birth",
-    cell: ({ row }) => row.original.profile.dateOfBirth,
+    id: "time",
+    header: "Time",
+    cell: ({ row }) => row.original.time,
   },
   {
-    id: "gender",
-    header: "Gender",
+    id: "status",
+    header: "Status",
     cell: ({ row }) => (
       <Badge className="text-xs" variant="secondary">
-        {row.original.profile.gender}
+        {row.original.status}
       </Badge>
     ),
   },
@@ -110,7 +111,7 @@ const columns: ColumnDef<Patient>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const patient = row.original;
+      const appointment = row.original;
 
       return (
         <DropdownMenu>
@@ -123,13 +124,13 @@ const columns: ColumnDef<Patient>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(patient.id)}
+              onClick={() => navigator.clipboard.writeText(appointment.id)}
             >
               Copy email
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View patient details</DropdownMenuItem>
-            <DropdownMenuItem>Edit patient</DropdownMenuItem>
+            <DropdownMenuItem>View appointment details</DropdownMenuItem>
+            <DropdownMenuItem>Edit appointment</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -137,7 +138,7 @@ const columns: ColumnDef<Patient>[] = [
   },
 ];
 
-export default function PatientsTable() {
+const AppointmentsTable = () => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -280,4 +281,6 @@ export default function PatientsTable() {
       </div>
     </div>
   );
-}
+};
+
+export default AppointmentsTable;
