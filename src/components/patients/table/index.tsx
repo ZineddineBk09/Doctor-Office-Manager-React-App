@@ -33,11 +33,11 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { fakePatients } from "../../../data/examples";
 import { Patient } from "../../../interfaces";
 import { Badge } from "../../ui/badge";
-
-const data: Patient[] = fakePatients;
+import { RootState } from "../../../store";
+import { useSelector } from "react-redux";
+import { fakePatients } from "../../../data/examples";
 
 const columns: ColumnDef<Patient>[] = [
   {
@@ -145,9 +145,12 @@ export default function PatientsTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const { patients, status, error } = useSelector(
+    (state: RootState) => state.patients
+  );
 
   const table = useReactTable({
-    data,
+    data: fakePatients,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -169,10 +172,10 @@ export default function PatientsTable() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter phone number..."
+          value={(table.getColumn("phone")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("phone")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
