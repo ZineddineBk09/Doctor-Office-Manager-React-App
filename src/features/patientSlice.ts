@@ -8,6 +8,7 @@ export const fetchPatients = createAsyncThunk(
   "patients/fetchPatients",
   async () => {
     const response = await axios.get(`/patients`);
+
     return response.data;
   }
 );
