@@ -33,11 +33,10 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { fakeAppointments } from "../../../data/examples";
 import { Appointment } from "../../../interfaces";
 import { Badge } from "../../ui/badge";
-
-const data: Appointment[] = fakeAppointments;
+import { RootState } from "../../../store";
+import { useSelector } from "react-redux";
 
 const columns: ColumnDef<Appointment>[] = [
   {
@@ -146,9 +145,12 @@ const AppointmentsTable = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const { appointments, status, error } = useSelector(
+    (state: RootState) => state.appointments
+  );
 
   const table = useReactTable({
-    data,
+    data: appointments,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -170,10 +172,10 @@ const AppointmentsTable = () => {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter phone number..."
+          value={(table.getColumn("phone")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("phone")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
