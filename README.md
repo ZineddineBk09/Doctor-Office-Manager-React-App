@@ -16,6 +16,7 @@ This Doctor Office Management application allows doctors to manage appointments,
   - [Styling](#styling)
   - [Authentication](#authentication)
   - [Contributing](#contributing)
+  - [API](#api)
   - [Pages](#pages)
 
 ### Installation
@@ -130,6 +131,14 @@ This Doctor Office Management application allows doctors to manage appointments,
 5. **Push to the branch** (`git push origin feature-branch`).
 6. **Open a pull request**.
 
+
+### API
+
+- **Base URL**: `https://mp0bf0e16adbc0f55841.free.beeceptor.com/`
+- I used Beeceptor for mocking the API requests, and created 02 endpoints:
+  - **GET `/appointments`**: Returns a list of appointments.
+  - **GET `/patients`**: Returns a list of patients.
+  <img src="public/images/screenshots/mock api endpoints.png" alt="Login" width="750">
 
 ### Pages
 
