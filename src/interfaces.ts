@@ -11,7 +11,7 @@ export interface UserProfile {
   phone: string;
   address: string;
   dateOfBirth: string;
-  gender: "male" | "female" | "other";
+  gender: "Male" | "Female" | "Other";
 }
 
 export interface Doctor extends User {
@@ -53,4 +53,5 @@ export interface Chat {
   id: string;
   patientId: string;
   messages: Message[];
+  timestamp: string;
 }
