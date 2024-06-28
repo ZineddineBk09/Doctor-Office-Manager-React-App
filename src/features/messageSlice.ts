@@ -1,4 +1,3 @@
-// src/features/messagesSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../lib/axios";
 

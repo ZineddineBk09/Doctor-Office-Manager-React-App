@@ -1,4 +1,3 @@
-// src/features/authSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { auth } from "../services/firebase";
 import {

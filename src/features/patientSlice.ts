@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../lib/axios";
 import { Patient } from "@/interfaces";
+import { fakePatients } from "../data/examples";
 
 // Async thunk to fetch patients
 export const fetchPatients = createAsyncThunk(
@@ -36,10 +37,18 @@ const patientsSlice = createSlice({
       })
       .addCase(fetchPatients.fulfilled, (state, action) => {
         state.status = "succeeded";
+        console.log("action.payload", JSON.parse(action.payload));
         state.patients = action.payload;
       })
       .addCase(fetchPatients.rejected, (state: any, action) => {
         state.status = "failed";
+
+        // check if error contains status code 429 ==> too many requests to mock api
+        if ((action.error.message as any).includes("429")) {
+          state.patients = fakePatients;
+          return;
+        }
+
         state.error = action.error.message;
       })
       .addCase(fetchPatientDetails.pending, (state) => {

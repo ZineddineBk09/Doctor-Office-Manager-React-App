@@ -1,7 +1,7 @@
-// src/features/appointmentsSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../lib/axios";
 import { Appointment } from "../interfaces";
+import { fakeAppointments } from "../data/examples";
 
 // Async thunk to fetch appointments
 export const fetchAppointments = createAsyncThunk(
@@ -19,6 +19,7 @@ export const acceptAppointment = createAsyncThunk(
     const response = await axios.put(`/appointments/${appointmentId}`, {
       status: "accepted",
     });
+
     return response.data;
   }
 );
@@ -37,7 +38,7 @@ export const rejectAppointment = createAsyncThunk(
 const appointmentsSlice = createSlice({
   name: "appointments",
   initialState: {
-    appointments: [] as Appointment[],
+    appointments: fakeAppointments as Appointment[],
     status: "idle",
     error: null,
   },
@@ -53,6 +54,12 @@ const appointmentsSlice = createSlice({
       })
       .addCase(fetchAppointments.rejected, (state, action) => {
         state.status = "failed";
+
+        // check if error contains status code 429 ==> too many requests to mock api
+        if ((action.error.message as any).includes("429")) {
+          state.appointments = fakeAppointments;
+          return;
+        }
         state.error = action.error.message as any;
       })
       .addCase(acceptAppointment.fulfilled, (state: any, action) => {
