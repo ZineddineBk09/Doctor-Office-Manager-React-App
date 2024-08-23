@@ -13,7 +13,7 @@ import Signup from "./components/register";
 import UnProtectedRoute from "./components/shared/unprotected-route";
 
 const App: React.FC = () => {
-  return (
+  return ( 
     <Provider store={store}>
       <Router>
         <Routes>
