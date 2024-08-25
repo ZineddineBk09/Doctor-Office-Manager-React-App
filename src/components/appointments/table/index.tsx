@@ -152,6 +152,7 @@ const AppointmentsTable = () => {
   const table = useReactTable({
     data: appointments,
     columns,
+    enableGlobalFilter: true,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),

@@ -25,7 +25,7 @@ export default function Appointments() {
           <div className="ml-auto">
             <Button>Create New Appointment</Button>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center px-12 mb-5">
             <div className="ml-auto flex items-center gap-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -54,7 +54,7 @@ export default function Appointments() {
               </Button>
             </div>
           </div>
-          <Card x-chunk="dashboard-05-chunk-3">
+          <Card x-chunk="dashboard-05-chunk-3" className="mt-10">
             <CardHeader className="px-7">
               <CardTitle>Appointments</CardTitle>
               <CardDescription>
